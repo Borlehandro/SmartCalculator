@@ -1,5 +1,7 @@
 package calculator.operations;
 
+import java.math.BigInteger;
+
 public class MinusOperation extends Operation {
 
     public MinusOperation() {
@@ -7,8 +9,8 @@ public class MinusOperation extends Operation {
     }
 
     @Override
-    public int count(int a, int b) {
+    public BigInteger count(BigInteger a, BigInteger b) {
         // System.err.println(b + "-" + a);
-        return b - a;
+        return b.subtract(a);
     }
 }

@@ -3,10 +3,12 @@ package calculator.expressions;
 import calculator.ExpressionChecker;
 import calculator.exceptions.UnknownVariableException;
 
+import java.math.BigInteger;
+
 public class DefineExpression extends Expression {
 
     private final String variable;
-    private final int value;
+    private final BigInteger value;
 
     public DefineExpression(String s) throws UnknownVariableException {
         s = s.replaceAll(" ", "");
@@ -14,7 +16,7 @@ public class DefineExpression extends Expression {
         String any = s.substring(s.indexOf('=') + 1);
         // System.err.println(any);
         if(ExpressionChecker.isNumber(any))
-            value = Integer.parseInt(any);
+            value = new BigInteger(any);
         else {
             value = pool.getValue(any);
         }

@@ -1,5 +1,7 @@
 package calculator.operations;
 
+import java.math.BigInteger;
+
 public class CloseBracket extends Operation {
 
     public CloseBracket() {
@@ -8,7 +10,7 @@ public class CloseBracket extends Operation {
 
     // Todo bad idea
     @Override
-    public int count(int a, int b) {
-        return 0;
+    public BigInteger count(BigInteger a, BigInteger b) {
+        return BigInteger.ZERO;
     }
 }

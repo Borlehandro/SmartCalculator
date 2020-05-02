@@ -8,12 +8,13 @@ import calculator.operations.OpenBracket;
 import calculator.operations.Operation;
 import calculator.operations.OperationFactory;
 
+import java.math.BigInteger;
 import java.util.LinkedList;
 
 public class CalculateExpression extends Expression {
 
     private final LinkedList<Operation> operationsStack = new LinkedList<>();
-    private final LinkedList<Integer> argumentsStack = new LinkedList<>();
+    private final LinkedList<BigInteger> argumentsStack = new LinkedList<>();
     private int balancer = 0;
 
     CalculateExpression(String s) throws ExpressionFormatException, UnknownVariableException {
@@ -45,7 +46,7 @@ public class CalculateExpression extends Expression {
             } else {
                 switch (bufferType) {
                     case NUMBER:
-                        int number = Integer.parseInt(builder.toString());
+                        BigInteger number = new BigInteger(builder.toString());
                         argumentsStack.push(number);
                         builder = new StringBuilder();
                         if (item != '\0') {
@@ -58,7 +59,7 @@ public class CalculateExpression extends Expression {
                         if (!pool.containsKey(builder.toString()))
                             throw new UnknownVariableException();
                         else {
-                            int num = pool.getValue(builder.toString());
+                            BigInteger num = pool.getValue(builder.toString());
                             argumentsStack.push(num);
                             builder = new StringBuilder();
                             if (item != '\0') {

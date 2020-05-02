@@ -2,18 +2,19 @@ package calculator;
 
 import calculator.exceptions.UnknownVariableException;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
 public class VariablesPool {
 
-    private Map<String, Integer> pool = new HashMap<>();
+    private Map<String, BigInteger> pool = new HashMap<>();
 
-    public void put(String name, Integer value) {
+    public void put(String name, BigInteger value) {
             pool.put(name, value);
     }
 
-    public int getValue(String name) throws UnknownVariableException {
+    public BigInteger getValue(String name) throws UnknownVariableException {
         if(pool.containsKey(name))
             return pool.get(name);
         else
